@@ -28,12 +28,12 @@ namespace ShiveksApplication_Ecommerce.Models
         public int cinemaId { get; set; }
         [ForeignKey("cinemaID")]
 
-        public Cinema cinema { get; set; }
+      //  public Cinema cinema { get; set; }
 
         public int ProducerId { get; set; }
         [ForeignKey("ProducerId")]
 
-        public Producer producer { get; set; }
+       // public Producer producer { get; set; }
 
 
 

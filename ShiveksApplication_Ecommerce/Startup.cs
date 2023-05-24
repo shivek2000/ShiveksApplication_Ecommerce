@@ -9,6 +9,7 @@ using ShiveksApplication_Ecommerce.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShiveksApplication_Ecommerce
 {
@@ -25,7 +26,9 @@ namespace ShiveksApplication_Ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             //db context
-            services.AddDbContext<AppDbContext>();
+            // add the dbconext class to the service after the sql server has been connected
+            //download nuget sql server and add the connection string value to the below
+            services.AddDbContext<AppDbContext>(Options =>Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddControllersWithViews();
         }
 

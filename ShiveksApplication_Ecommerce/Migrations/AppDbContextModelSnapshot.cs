@@ -107,13 +107,10 @@ namespace ShiveksApplication_Ecommerce.Migrations
                     b.Property<string>("Producer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProducerId")
+                    b.Property<int?>("ProducerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("cinemaID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("cinemaId")
+                    b.Property<int?>("cinemaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("endDate")
@@ -126,7 +123,7 @@ namespace ShiveksApplication_Ecommerce.Migrations
 
                     b.HasIndex("ProducerId");
 
-                    b.HasIndex("cinemaID");
+                    b.HasIndex("cinemaId");
 
                     b.ToTable("Movies");
                 });
@@ -175,13 +172,11 @@ namespace ShiveksApplication_Ecommerce.Migrations
                 {
                     b.HasOne("ShiveksApplication_Ecommerce.Models.Producer", "producer")
                         .WithMany("movies")
-                        .HasForeignKey("ProducerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProducerId");
 
                     b.HasOne("ShiveksApplication_Ecommerce.Models.Cinema", "cinema")
                         .WithMany("movies")
-                        .HasForeignKey("cinemaID");
+                        .HasForeignKey("cinemaId");
 
                     b.Navigation("cinema");
 

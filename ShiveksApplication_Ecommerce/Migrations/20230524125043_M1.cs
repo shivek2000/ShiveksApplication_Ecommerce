@@ -68,16 +68,15 @@ namespace ShiveksApplication_Ecommerce.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     startDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     endDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    cinemaId = table.Column<int>(type: "int", nullable: false),
-                    cinemaID = table.Column<int>(type: "int", nullable: true),
-                    ProducerId = table.Column<int>(type: "int", nullable: false)
+                    cinemaId = table.Column<int>(type: "int", nullable: true),
+                    ProducerId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Movies_Cinemas_cinemaID",
-                        column: x => x.cinemaID,
+                        name: "FK_Movies_Cinemas_cinemaId",
+                        column: x => x.cinemaId,
                         principalTable: "Cinemas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -86,7 +85,7 @@ namespace ShiveksApplication_Ecommerce.Migrations
                         column: x => x.ProducerId,
                         principalTable: "Producer",
                         principalColumn: "ProducerId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -119,9 +118,9 @@ namespace ShiveksApplication_Ecommerce.Migrations
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movies_cinemaID",
+                name: "IX_Movies_cinemaId",
                 table: "Movies",
-                column: "cinemaID");
+                column: "cinemaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movies_ProducerId",

@@ -25,18 +25,15 @@ namespace ShiveksApplication_Ecommerce.Models
 
         //relationship
         public List<Actor_movie> Actor_Movies { get; set; }
-        public int cinemaId { get; set; }
-        [ForeignKey("cinemaID")]
+        //public int cinemaId { get; set; }
+        //[ForeignKey("cinemaID")]
 
-      //  public Cinema cinema { get; set; }
+        public Cinema cinema { get; set; }
 
-        public int ProducerId { get; set; }
-        [ForeignKey("ProducerId")]
-
-       // public Producer producer { get; set; }
-
-
-
-
+      //  public int ProducerId { get; set; }
+        //[ForeignKey("ProducerId")]
+        
+        public Producer producer { get; set; }
+        
     }
 }
